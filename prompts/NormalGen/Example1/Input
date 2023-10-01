@@ -1,0 +1,10 @@
+#function_description
+	Replaces MIME encodings with their equivalent characters in the specified encoding.
+
+	Example
+	-------
+	5 w=E2=80-99s -> 5 w’s
+
+
+#function_definition
+    def replace_mime_encodings(text: str, encoding: str) -> str

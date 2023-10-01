@@ -1,0 +1,160 @@
+#function_description
+	Checks to see if a table element contains bulleted text.
+
+
+#function_definition
+	def _is_bulleted_table(tag_elem) -> bool
+
+
+#variable_in_current_file
+	None
+
+
+#local_function_in_current_file
+	class HTMLDocument
+		function1{
+			fully qualified name: unstructured.documents.html.HTMLDocument.__init__
+			summary: Initialize an object with optional stylesheet, parser, and assemble_articles parameters.
+			signature:def __init__(self, stylesheet: Optional[str], parser: VALID_PARSERS, assemble_articles: bool)
+			source_code: def __init__(self, stylesheet: Optional[str]=None, parser: VALID_PARSERS=None, assemble_articles: bool=True):
+			    self.assembled_articles = assemble_articles
+			    super().__init__(stylesheet=stylesheet, parser=parser)
+		}
+		function2{
+			fully qualified name: unstructured.documents.html.HTMLDocument._read
+			summary: Read and structure an HTML document, looking for article tags and inserting page breaks between multiple article sections.
+			signature: def _read(self) -> List[Page]
+		}
+		function3{
+			fully qualified name: unstructured.documents.html.HTMLDocument.doc_after_cleaners
+			summary: Filter elements in an HTML document based on specified criteria and return a new instance of the class.
+			signature: def doc_after_cleaners(self, skip_headers_and_footers, skip_table, inplace) -> HTMLDocument
+		}
+
+	class TagsMixin
+		function4{
+			fully qualified name: unstructured.documents.html.TagsMixin.__init__
+			summary: Initialize an object with optional arguments: tag, ancestortags, links, emphasized_texts, text_as_html. If tag is None, raise a TypeError. Otherwise, assign the values to the corresponding attributes.
+			signature:def __init__(self)
+			source_code: def __init__(self, *args, tag: Optional[str]=None, ancestortags: Sequence[str]=(), links: Sequence[Link]=[], emphasized_texts: Sequence[dict]=[], text_as_html: Optional[str]=None, **kwargs):
+			    if tag is None:
+			        raise TypeError('tag argument must be passed and not None')
+			    else:
+			        self.tag = tag
+			    self.ancestortags = ancestortags
+			    self.links = links
+			    self.emphasized_texts = emphasized_texts
+			    self.text_as_html = text_as_html
+			    super().__init__(*args, **kwargs)
+		}
+
+	function5{
+		fully qualified name: unstructured.documents.html._get_links_from_tag
+		summary: Get all links from a given HTML tag element, including its descendants.
+		signature: def _get_links_from_tag(tag_elem: etree.Element) -> List[Link]
+	}
+	function6{
+		fully qualified name: unstructured.documents.html._get_emphasized_texts_from_tag
+		summary: Get emphasized texts enclosed in specific HTML tags from a given tag element.
+		signature: def _get_emphasized_texts_from_tag(tag_elem: etree.Element) -> List[dict]
+	}
+	function7{
+		fully qualified name: unstructured.documents.html._parse_tag
+		summary: Convert an etree element to a Text element if there is applicable text in the element.
+		signature: def _parse_tag(tag_elem: etree.Element) -> Optional[Element]
+	}
+	function8{
+		fully qualified name: unstructured.documents.html._text_to_element
+		summary: Given the text of an element, the tag type, ancestor tags, depth, links, and emphasized texts, this function produces the appropriate HTML element based on certain conditions.
+		signature: def _text_to_element(text: str, tag: str, ancestortags: Tuple[str, ...], depth: int, links: List[Link], emphasized_texts: List[dict]) -> Optional[Element]
+	}
+	function9{
+		fully qualified name: unstructured.documents.html._is_container_with_text
+		summary: Check if a tag is a container that contains text.
+		signature: def _is_container_with_text(tag_elem: etree.Element) -> bool
+	}
+	function10{
+		fully qualified name: unstructured.documents.html.is_narrative_tag
+		summary: Check if the given text is a narrative based on the tag information.
+		signature: def is_narrative_tag(text: str, tag: str) -> bool
+	}
+	function11{
+		fully qualified name: unstructured.documents.html._construct_text
+		summary: Extract text from a text tag element, including tail text.
+		signature: def _construct_text(tag_elem: etree.Element, include_tail_text: bool) -> str
+	}
+	function12{
+		fully qualified name: unstructured.documents.html._has_break_tags
+		summary: Check if a given XML element or any of its descendants have break tags.
+		signature: def _has_break_tags(tag_elem: etree.Element) -> bool
+	}
+	function13{
+		fully qualified name: unstructured.documents.html._unfurl_break_tags
+		summary: Unfurl break tags in an XML element and return a list of unfurled elements.
+		signature: def _unfurl_break_tags(tag_elem: etree.Element) -> List[etree.Element]
+	}
+	function14{
+		fully qualified name: unstructured.documents.html._is_text_tag
+		summary: Check if a tag potentially contains narrative text.
+		signature: def _is_text_tag(tag_elem: etree.Element, max_predecessor_len: int) -> bool
+	}
+	function15{
+		fully qualified name: unstructured.documents.html._process_leaf_table_item
+		summary: Process a leaf table item in an XML element and return an HTMLTable object and the original element.
+		signature: def _process_leaf_table_item(tag_elem: etree.Element) -> Tuple[Optional[Element], etree.Element]
+	}
+	function16{
+		fully qualified name: unstructured.documents.html._process_list_item
+		summary: Process an etree element and extract relevant bulleted text to convert it into ListItem objects. Also return the next html elements to skip processing if bullets are found in a div element.
+		signature: def _process_list_item(tag_elem: etree.Element, max_predecessor_len: int) -> Tuple[Optional[Element], etree.Element]
+	}
+	function17{
+		fully qualified name: unstructured.documents.html._get_bullet_descendants
+		summary: Return a tuple of descendant elements of `next_element` that are descendants of `element`.
+		signature: def _get_bullet_descendants(element, next_element) -> Tuple[etree.Element, ...]
+	}
+	function18{
+		fully qualified name: unstructured.documents.html.is_list_item_tag
+		summary: Check if a tag contains bulleted text.
+		signature: def is_list_item_tag(tag_elem: etree.Element) -> bool
+	}
+	function19{
+		fully qualified name: unstructured.documents.html._is_table_item
+		summary: Check if a tag contains a table item.
+		signature: def _is_table_item(tag_elem: etree.Element) -> bool
+	}
+	function20{
+		fully qualified name: unstructured.documents.html._bulleted_text_from_table
+		summary: Extract bulletized narrative text from a table, excluding non-bullet text.
+		signature: def _bulleted_text_from_table(table) -> List[Element]
+	}
+	function21{
+		fully qualified name: unstructured.documents.html._has_adjacent_bulleted_spans
+		summary: Check if a div contains two or more adjacent spans beginning with a bullet, treating it as a single bulleted text element.
+		signature: def _has_adjacent_bulleted_spans(tag_elem: etree.Element, children: List[etree.Element]) -> bool
+	}
+	function22{
+		fully qualified name: unstructured.documents.html.has_table_ancestor
+		summary: Check if an element has ancestors that are table elements.
+		signature: def has_table_ancestor(element: TagsMixin) -> bool
+	}
+	function23{
+		fully qualified name: unstructured.documents.html.is_table
+		summary: Check if an element is a table by checking its tag against a list of table tags.
+		signature: def is_table(element: TagsMixin) -> bool
+	}
+	function24{
+		fully qualified name: unstructured.documents.html.in_header_or_footer
+		summary: Check if an element is contained within a header or a footer tag.
+		signature: def in_header_or_footer(element: TagsMixin) -> bool
+	}
+	function25{
+		fully qualified name: unstructured.documents.html._find_main
+		summary: Find the main tag of the HTML document, or return the whole document if it doesn't exist.
+		signature: def _find_main(root: etree.Element) -> etree.Element
+	}
+	function26{
+		fully qualified name: unstructured.documents.html._find_articles
+		summary: Find and return distinct articles from an HTML document, or return the entire document as a single item list if there are no article tags.
+		signature: def _find_articles(root: etree.Element, assemble_articles: bool) -> List[etree.Element]
+	}

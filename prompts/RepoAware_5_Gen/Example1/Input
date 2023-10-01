@@ -1,0 +1,152 @@
+#function_description
+	Replaces MIME encodings with their equivalent characters in the specified encoding.
+
+	Example
+	-------
+	5 w=E2=80-99s -> 5 w’s
+
+
+#function_definition
+	def replace_mime_encodings(text: str, encoding: str) -> str
+
+
+#local_function_in_current_file
+    function1{
+        fully qualified name: unstructured.cleaners.core.clean_non_ascii_chars
+        summary: Clean non-ascii characters from a unicode string.
+        signature: def clean_non_ascii_chars(text) -> str
+    }
+
+    function2{
+        fully qualified name: unstructured.cleaners.core.clean_bullets
+        summary: Remove unicode bullets from a section of text.
+        signature: def clean_bullets(text) -> str
+    }
+
+    function3{
+        fully qualified name: unstructured.cleaners.core.clean_ordered_bullets
+        summary: Clean the start of bulleted text sections by removing up to three "sub-section" bullets, accounting for numeric and alphanumeric types.
+        signature: def clean_ordered_bullets(text) -> str
+    }
+
+    function4{
+        fully qualified name: unstructured.cleaners.core.group_bullet_paragraph
+        summary: Group paragraphs with bullets that have line breaks for visual/formatting purposes.
+        signature: def group_bullet_paragraph(paragraph: str) -> list
+    }
+
+    function5{
+        fully qualified name: unstructured.cleaners.core.group_broken_paragraphs
+        summary: Group paragraphs with line breaks for visual/formatting purposes into single paragraphs.
+        signature: def group_broken_paragraphs(text: str, line_split: re.Pattern, paragraph_split: re.Pattern) -> str
+    }
+
+    function6{
+        fully qualified name: unstructured.cleaners.core.new_line_grouper
+        summary: Concatenate text paragraphs separated by one-line breaks.
+        signature: def new_line_grouper(text: str, paragraph_split: re.Pattern) -> str
+    }
+
+    function7{
+        fully qualified name: unstructured.cleaners.core.blank_line_grouper
+        summary: Concatenates text document with blank-line paragraph break pattern.
+        signature: def blank_line_grouper(text: str, paragraph_split: re.Pattern) -> str
+    }
+
+    function8{
+        fully qualified name: unstructured.cleaners.core.auto_paragraph_grouper
+        summary: Group paragraphs in a text based on the ratio of new lines to total line count. If the ratio is below a threshold, use new-line grouping. Otherwise, use blank-line grouping.
+        signature: def auto_paragraph_grouper(text: str, line_split: re.Pattern, max_line_count: int, threshold: float) -> str
+    }
+
+    function9{
+        fully qualified name: unstructured.cleaners.core.replace_unicode_quotes
+        summary: Replace unicode quotes and special characters in text with their expected characters.
+        signature: def replace_unicode_quotes(text) -> str
+    }
+
+    function10{
+        fully qualified name: unstructured.cleaners.core.remove_punctuation
+        summary: Remove punctuation from a given string.
+        signature: def remove_punctuation(s: str) -> str
+    }
+
+    function11{
+        fully qualified name: unstructured.cleaners.core.clean_extra_whitespace
+        summary: Clean extra whitespace characters in a given text.
+        signature: def clean_extra_whitespace(text: str) -> str
+    }
+
+    function12{
+        fully qualified name: unstructured.cleaners.core.clean_dashes
+        summary: Remove dash characters from the given text.
+        signature: def clean_dashes(text: str) -> str
+    }
+
+    function13{
+        fully qualified name: unstructured.cleaners.core.clean_trailing_punctuation
+        summary: Remove all trailing punctuation from the given text.
+        signature: def clean_trailing_punctuation(text: str) -> str
+    }
+
+    function14{
+        fully qualified name: unstructured.cleaners.core.clean_prefix
+        summary: Remove prefixes from a string based on a specified pattern, with options to ignore case and strip leading whitespace.
+        signature: def clean_prefix(text: str, pattern: str, ignore_case: bool, strip: bool) -> str
+    }
+
+    function15{
+        fully qualified name: unstructured.cleaners.core.clean_postfix
+        summary: Remove postfixes from a string based on a specified pattern, with options to ignore case and strip trailing whitespace.
+        signature: def clean_postfix(text: str, pattern: str, ignore_case: bool, strip: bool) -> str
+    }
+
+    function16{
+        fully qualified name: unstructured.cleaners.core.clean
+        summary: Clean text by removing extra whitespace, dashes, bullets, trailing punctuation, and converting to lowercase if specified.
+        signature: def clean(text: str, extra_whitespace: bool, dashes: bool, bullets: bool, trailing_punctuation: bool, lowercase: bool) -> str
+    }
+
+    function17{
+        fully qualified name: unstructured.cleaners.core.bytes_string_to_string
+        summary: Convert a string representation of a byte string to a regular string using the specified encoding.
+        signature: def bytes_string_to_string(text: str, encoding: str)
+    }
+
+
+#global_function_in_other_file
+	function1{
+		fully qualified name: unstructured.file_utils.encoding.format_encoding_str
+		summary:Format the input encoding string to a standardized format.
+		signature: def format_encoding_str(encoding: str) -> str
+	}
+	function2{
+		fully qualified name: unstructured.file_utils.encoding.validate_encoding
+		summary:Check if an encoding string is valid.
+		signature: def validate_encoding(encoding: str) -> bool
+	}
+	function3{
+		fully qualified name: unstructured.file_utils.encoding.read_txt_file
+		summary:Read a plain text file and extract its metadata.
+		signature: def read_txt_file(filename: str, file: Optional[Union[bytes, IO[bytes]]], encoding: Optional[str]) -> Tuple[str, str]
+	}
+	function4{
+		fully qualified name: unstructured.partition.md.optional_decode
+		summary:Decode the contents if it is in bytes format, otherwise return it as is.
+		signature: def optional_decode(contents: Union[str, bytes]) -> str
+	}
+	function5{
+		fully qualified name: unstructured.file_utils.encoding.detect_file_encoding
+		summary:Detect the encoding of a file and return the formatted encoding and the file text.
+		signature: def detect_file_encoding(filename: str, file: Optional[Union[bytes, IO[bytes]]]) -> Tuple[str, str]
+	}
+	function6{
+		fully qualified name: unstructured.partition.email.partition_email
+		summary:Partition an .eml document into its constituent elements, such as text, attachments, and headers.
+		signature: def partition_email(filename: Optional[str], file: Optional[Union[IO[bytes], SpooledTemporaryFile]], text: Optional[str], content_source: str, encoding: Optional[str], include_headers: bool, max_partition: Optional[int], include_metadata: bool, metadata_filename: Optional[str], metadata_last_modified: Optional[str], process_attachments: bool, attachment_partitioner: Optional[Callable], min_partition: Optional[int]) -> List[Element]
+	}
+	function7{
+		fully qualified name: unstructured.file_utils.file_conversion.convert_file_to_text
+		summary:Convert a document from one format to another using pandoc.
+		signature: def convert_file_to_text(filename: str, source_format: str, target_format: str) -> str
+	}

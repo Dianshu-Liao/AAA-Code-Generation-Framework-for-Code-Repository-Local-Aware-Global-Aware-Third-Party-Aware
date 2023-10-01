@@ -1,0 +1,11 @@
+#function_description
+	Returns the normalized edit distance from Lopresti et al.
+
+	:param s1: First string
+	:type s1: str
+	:param s2: Second string
+	:type s2: str
+
+
+#function_definition
+	def normalized_edit_distance(s1: str, s2: str)

@@ -1,0 +1,42 @@
+#function_description
+	Returns the normalized edit distance from Lopresti et al.
+
+	:param s1: First string
+	:type s1: str
+	:param s2: Second string
+	:type s2: str
+
+
+#function_definition
+	def normalized_edit_distance(s1: str, s2: str)
+
+
+#current_file_path
+	amazon-textract-textractor-1.3.5/textractor/utils/search_utils.py
+
+
+#variable_in_current_file
+	class SearchUtils:
+		model = None
+		util = None
+		model_string = "all-MiniLM-L6-v2"
+
+
+#local_function_in_current_file
+	class SearchUtils
+		function1{
+			fully qualified name: textractor.utils.search_utils.SearchUtils.get_word_similarity
+			summary: Calculate the similarity between two words using a specified similarity metric.
+			signature: def get_word_similarity(cls, word_1: str, word_2: str, similarity_metric: SimilarityMetric) -> float
+		}
+
+	function2{
+		fully qualified name: textractor.utils.search_utils.jaccard_similarity
+		summary: Calculate the Jaccard similarity between two input lists.
+		signature: def jaccard_similarity(list_1: list, list_2: list) -> float
+	}
+	function3{
+		fully qualified name: textractor.utils.search_utils.get_metadata_attr_name
+		summary: Return the metadata attribute mapping for the input CellType.
+		signature: def get_metadata_attr_name(cell_atr)
+	}

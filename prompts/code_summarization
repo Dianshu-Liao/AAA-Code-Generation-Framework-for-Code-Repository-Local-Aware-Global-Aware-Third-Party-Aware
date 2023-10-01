@@ -1,0 +1,71 @@
+You are an expert Python programmer.
+Given a function code, summarize it with short sentences.
+
+Here are 5 examples:
+
+function code:
+def to_arrow_schema(schema):
+
+    import pyarrow as pa
+    fields = [pa.field(field.name, to_arrow_type(field.dataType), nullable=field.nullable)
+              for field in schema]
+    return pa.schema(fields)
+summary:
+Convert a schema from Spark to Arrow
+
+
+function code:
+def _has_nulltype(dt):
+
+    if isinstance(dt, StructType):
+        return any(_has_nulltype(f.dataType) for f in dt.fields)
+    elif isinstance(dt, ArrayType):
+        return _has_nulltype((dt.elementType))
+    elif isinstance(dt, MapType):
+        return _has_nulltype(dt.keyType) or _has_nulltype(dt.valueType)
+    else:
+        return isinstance(dt, NullType)
+summary:
+Return whether there is NullType in `dt` or not
+
+
+function code:
+def setIfMissing(self, key, value):
+    if self.get(key) is None:
+        self.set(key, value)
+    return self
+summary:
+Set a configuration property, if not already set.
+
+
+function code:
+def majorMinorVersion(sparkVersion):
+    m = re.search(r'^(\d+)\.(\d+)(\..*)?$', sparkVersion)
+    if m is not None:
+        return (int(m.group(1)), int(m.group(2)))
+    else:
+        raise ValueError("Spark tried to parse '%s' as a Spark" % sparkVersion +
+                         " version string, but it could not find the major and minor" +
+                         " version numbers.")
+summary:
+Given a Spark version string, return the (major version number, minor version number).
+
+
+function code:
+def _check_dataframe_localize_timestamps(pdf, timezone):
+
+    from pyspark.sql.utils import require_minimum_pandas_version
+    require_minimum_pandas_version()
+
+    for column, series in pdf.iteritems():
+        pdf[column] = _check_series_localize_timestamps(series, timezone)
+    return pdf
+summary:
+Convert timezone aware timestamps to timezone-naive in the specified timezone or local timezone
+
+
+Please answer strictly in the examples format and do not add extra sentences!
+
+function code:
+#{}#
+summary:

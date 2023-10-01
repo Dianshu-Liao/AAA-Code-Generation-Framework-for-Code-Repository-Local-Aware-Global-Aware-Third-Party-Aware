@@ -1,0 +1,17 @@
+#to_be_generated_code
+import quopri
+
+def replace_mime_encodings(text: str, encoding: str) -> str:
+    def format_encoding_str(encoding: str) -> str:
+
+        formatted_encoding = encoding.lower().replace("_", "-")
+
+        annotated_encodings = ["iso-8859-6-i", "iso-8859-6-e", "iso-8859-8-i", "iso-8859-8-e"]
+        if formatted_encoding in annotated_encodings:
+            formatted_encoding = formatted_encoding[:-2]  # remove the annotation
+
+        return formatted_encoding
+
+
+    formatted_encoding = format_encoding_str(encoding)
+    return quopri.decodestring(text.encode(formatted_encoding)).decode(formatted_encoding)

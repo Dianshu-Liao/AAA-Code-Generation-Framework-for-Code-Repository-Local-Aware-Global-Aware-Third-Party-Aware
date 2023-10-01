@@ -1,0 +1,6 @@
+#function_description
+    Checks to see if a table element contains bulleted text.
+
+
+#function_definition
+    def _is_bulleted_table(tag_elem) -> bool

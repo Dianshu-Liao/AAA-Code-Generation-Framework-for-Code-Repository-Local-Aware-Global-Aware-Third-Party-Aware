@@ -1,0 +1,66 @@
+#to_be_generated_code
+import re
+
+UNICODE_BULLETS_RE = re.compile(f"(?:{BULLETS_PATTERN})(?!{BULLETS_PATTERN})")
+def _is_bulleted_table(tag_elem) -> bool:
+    def replace_unicode_quotes(text) -> str:
+        """Replaces unicode bullets in text with the expected character
+
+        Example
+        -------
+        \x93What a lovely quote!\x94 -> “What a lovely quote!”
+        """
+        # NOTE(robinson) - We should probably make this something more sane like a regex
+        # instead of a whole big series of replaces
+        text = text.replace("\x91", "‘")
+        text = text.replace("\x92", "’")
+        text = text.replace("\x93", "“")
+        text = text.replace("\x94", "”")
+        text = text.replace("&apos;", "'")
+        text = text.replace("â\x80\x99", "'")
+        text = text.replace("â\x80“", "—")
+        text = text.replace("â\x80”", "–")
+        text = text.replace("â\x80˜", "‘")
+        text = text.replace("â\x80¦", "…")
+        text = text.replace("â\x80™", "’")
+        text = text.replace("â\x80œ", "“")
+        text = text.replace("â\x80?", "”")
+        text = text.replace("â\x80ť", "”")
+        text = text.replace("â\x80ś", "“")
+        text = text.replace("â\x80¨", "—")
+        text = text.replace("â\x80ł", "″")
+        text = text.replace("â\x80Ž", "")
+        text = text.replace("â\x80‚", "")
+        text = text.replace("â\x80‰", "")
+        text = text.replace("â\x80‹", "")
+        text = text.replace("â\x80", "")
+        text = text.replace("â\x80s'", "")
+        return text
+
+    def _construct_text(tag_elem: etree.Element, include_tail_text: bool = True) -> str:
+        """Extracts text from a text tag element."""
+        text = ""
+        for item in tag_elem.itertext():
+            if item:
+                text += item
+
+        if include_tail_text and tag_elem.tail:
+            text = text + tag_elem.tail
+
+        text = replace_unicode_quotes(text)
+        return text.strip()
+
+    def is_bulleted_text(text: str) -> bool:
+        """Checks to see if the section of text is part of a bulleted list."""
+        return UNICODE_BULLETS_RE.match(text.strip()) is not None
+
+    if tag_elem.tag != "table":
+        return False
+
+    rows = tag_elem.findall(".//tr")
+    for row in rows:
+        text = _construct_text(row)
+        if text and not is_bulleted_text(text):
+            return False
+
+    return True

@@ -1,0 +1,103 @@
+#function_description
+	Replaces MIME encodings with their equivalent characters in the specified encoding.
+
+	Example
+	-------
+	5 w=E2=80-99s -> 5 w’s
+
+
+#function_definition
+	def replace_mime_encodings(text: str, encoding: str) -> str
+
+
+#local_function_in_current_file
+	function1{
+		fully qualified name: unstructured.cleaners.core.clean_non_ascii_chars
+		summary: Clean non-ascii characters from a unicode string.
+		signature: def clean_non_ascii_chars(text) -> str
+	}
+	function2{
+		fully qualified name: unstructured.cleaners.core.clean_bullets
+		summary: Remove unicode bullets from a section of text.
+		signature: def clean_bullets(text) -> str
+	}
+	function3{
+		fully qualified name: unstructured.cleaners.core.clean_ordered_bullets
+		summary: Clean the start of bulleted text sections by removing up to three "sub-section" bullets, accounting for numeric and alphanumeric types.
+		signature: def clean_ordered_bullets(text) -> str
+	}
+	function4{
+		fully qualified name: unstructured.cleaners.core.clean_ligatures
+		summary: Replace ligatures in a text with their most likely equivalent characters.
+		signature: def clean_ligatures(text) -> str
+	}
+	function5{
+		fully qualified name: unstructured.cleaners.core.group_bullet_paragraph
+		summary: Group paragraphs with bullets that have line breaks for visual/formatting purposes.
+		signature: def group_bullet_paragraph(paragraph: str) -> list
+	}
+	function6{
+		fully qualified name: unstructured.cleaners.core.group_broken_paragraphs
+		summary: Group paragraphs with line breaks for visual/formatting purposes into single paragraphs.
+		signature: def group_broken_paragraphs(text: str, line_split: re.Pattern, paragraph_split: re.Pattern) -> str
+	}
+	function7{
+		fully qualified name: unstructured.cleaners.core.new_line_grouper
+		summary: Concatenate text paragraphs separated by one-line breaks.
+		signature: def new_line_grouper(text: str, paragraph_split: re.Pattern) -> str
+	}
+	function8{
+		fully qualified name: unstructured.cleaners.core.blank_line_grouper
+		summary: Concatenates text document with blank-line paragraph break pattern.
+		signature: def blank_line_grouper(text: str, paragraph_split: re.Pattern) -> str
+	}
+	function9{
+		fully qualified name: unstructured.cleaners.core.auto_paragraph_grouper
+		summary: Group paragraphs in a text based on the ratio of new lines to the total line count. If the ratio is below a threshold, use a new-line grouping type. If the ratio is equal to or above the threshold, use a blank-line grouping type.
+		signature: def auto_paragraph_grouper(text: str, line_split: re.Pattern, max_line_count: int, threshold: float) -> str
+	}
+	function10{
+		fully qualified name: unstructured.cleaners.core.replace_unicode_quotes
+		summary: Replace unicode quotes and special characters in text with their expected characters.
+		signature: def replace_unicode_quotes(text) -> str
+	}
+	function11{
+		fully qualified name: unstructured.cleaners.core.remove_punctuation
+		summary: Remove punctuation from a given string.
+		signature: def remove_punctuation(s: str) -> str
+	}
+	function12{
+		fully qualified name: unstructured.cleaners.core.clean_extra_whitespace
+		summary: Clean extra whitespace characters in a given text.
+		signature: def clean_extra_whitespace(text: str) -> str
+	}
+	function13{
+		fully qualified name: unstructured.cleaners.core.clean_dashes
+		summary: Remove dash characters from the given text.
+		signature: def clean_dashes(text: str) -> str
+	}
+	function14{
+		fully qualified name: unstructured.cleaners.core.clean_trailing_punctuation
+		summary: Remove all trailing punctuation from the given text.
+		signature: def clean_trailing_punctuation(text: str) -> str
+	}
+	function15{
+		fully qualified name: unstructured.cleaners.core.clean_prefix
+		summary: Remove prefixes from a string based on a specified pattern, with options to ignore case and strip leading whitespace.
+		signature: def clean_prefix(text: str, pattern: str, ignore_case: bool, strip: bool) -> str
+	}
+	function16{
+		fully qualified name: unstructured.cleaners.core.clean_postfix
+		summary: Remove postfixes from a string based on a specified pattern, with options to ignore case and strip trailing whitespace.
+		signature: def clean_postfix(text: str, pattern: str, ignore_case: bool, strip: bool) -> str
+	}
+	function17{
+		fully qualified name: unstructured.cleaners.core.clean
+		summary: Clean text by removing extra whitespace, dashes, bullets, trailing punctuation, and converting to lowercase if specified.
+		signature: def clean(text: str, extra_whitespace: bool, dashes: bool, bullets: bool, trailing_punctuation: bool, lowercase: bool) -> str
+	}
+	function18{
+		fully qualified name: unstructured.cleaners.core.bytes_string_to_string
+		summary: Convert a string representation of a byte string to a regular string using the specified encoding.
+		signature: def bytes_string_to_string(text: str, encoding: str)
+	}

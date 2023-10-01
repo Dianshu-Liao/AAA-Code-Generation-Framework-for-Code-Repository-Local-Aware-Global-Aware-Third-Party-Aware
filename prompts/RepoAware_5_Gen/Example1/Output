@@ -1,0 +1,8 @@
+#to_be_generated_code
+import quopri
+import unstructured.file_utils.encoding.format_encoding_str as format_encoding_str
+
+def replace_mime_encodings(text: str, encoding: str) -> str:
+
+    formatted_encoding = format_encoding_str(encoding)
+    return quopri.decodestring(text.encode(formatted_encoding)).decode(formatted_encoding)

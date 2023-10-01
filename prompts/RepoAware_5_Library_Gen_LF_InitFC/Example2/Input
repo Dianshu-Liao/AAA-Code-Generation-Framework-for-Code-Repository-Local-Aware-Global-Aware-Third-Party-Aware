@@ -1,0 +1,73 @@
+#third_party_libraries_available
+	[sentence_transformers, enum, pdf2image, csv, numpy, textractcaller, os, statistics, tabulate, editdistance, xlsxwriter, io, math, dataclasses, string, logging, PIL, abc, typing, argparse, uuid, boto3, json, collections, copy, pandas, trp, setuptools]
+
+
+#function_description
+	Returns the normalized edit distance from Lopresti et al.
+
+	:param s1: First string
+	:type s1: str
+	:param s2: Second string
+	:type s2: str
+
+
+#function_definition
+	def normalized_edit_distance(s1: str, s2: str)
+
+
+#local_function_in_py_file
+	class SearchUtils
+		function1{
+			fully qualified name: textractor.utils.search_utils.SearchUtils.get_word_similarity
+			summary: Calculate the similarity between two words using a specified similarity metric.
+			signature: def get_word_similarity(cls, word_1: str, word_2: str, similarity_metric: SimilarityMetric) -> float
+		}
+
+	function2{
+		fully qualified name: textractor.utils.search_utils.jaccard_similarity
+		summary: Calculate the Jaccard similarity between two input lists.
+		signature: def jaccard_similarity(list_1: list, list_2: list) -> float
+	}
+	function3{
+		fully qualified name: textractor.utils.search_utils.get_metadata_attr_name
+		summary: Return the metadata attribute mapping for the input CellType.
+		signature: def get_metadata_attr_name(cell_atr)
+	}
+
+
+#global_function_in_other_py_file
+	function1{
+		fully qualified name: textractor.entities.page.Page._get_coords
+		summary:Get the coordinates for the area within which to search for key-values with the directional_finder by retrieving coordinates of word_1 and word_2 if they exist else end of page.
+		signature: def _get_coords(self, word_1, word_2, direction)
+	}
+	function2{
+		fully qualified name: textractor.entities.page.Page._search_lines_with_similarity
+		summary:Search for lines containing a keyword and return the top k lines with their similarity to the keyword.
+		signature: def _search_lines_with_similarity(self, keyword: str, top_k: int, similarity_metric: SimilarityMetric, similarity_threshold: int) -> List[Tuple[Line, float]]
+	}
+	function3{
+		fully qualified name: textractor.entities.page.Page._search_words_with_similarity
+		summary:Search for words similar to a given keyword in a document, using a specified similarity metric and threshold. Return a list of the top k words with their similarity scores.
+		signature: def _search_words_with_similarity(self, keyword: str, top_k: int, similarity_metric: SimilarityMetric, similarity_threshold: float) -> List[Tuple[Word, float]]
+	}
+	function4{
+		fully qualified name: textractor.entities.document.Document._get_coords
+		summary:Return the coordinates for the area within which to search for key-values with the directional_finder by retrieving coordinates of word_1 and word_2 if they exist else end of page.
+		signature: def _get_coords(self, word_1, word_2, direction, page)
+	}
+	function5{
+		fully qualified name: textractor.entities.document.Document.directional_finder
+		summary:Find entity types in a document based on given parameters and return modified key-value and/or checkboxes.
+		signature: def directional_finder(self, word_1: str, word_2: str, page: int, prefix: str, direction, entities)
+	}
+	function6{
+		fully qualified name: textractor.entities.key_value.KeyValue.ocr_confidence
+		summary:Calculate and return the average OCR confidence for keys and values, along with the minimum confidence for each.
+		signature: def ocr_confidence(self)
+	}
+	function7{
+		fully qualified name: textractor.entities.bbox.BoundingBox._from_dict
+		summary:Build an axis aligned BoundingBox object from a dictionary of normalized coordinates, denormalizing them according to a given spatial object.
+		signature: def _from_dict(cls, bbox_dict: Dict[str, float], spatial_object: SpatialObject)
+	}

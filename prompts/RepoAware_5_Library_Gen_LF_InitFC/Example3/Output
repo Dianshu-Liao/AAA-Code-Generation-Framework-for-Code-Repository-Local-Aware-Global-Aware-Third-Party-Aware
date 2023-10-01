@@ -1,0 +1,14 @@
+#to_be_generated_code
+import unstructured.partition.text_type.is_bulleted_text as is_bulleted_text
+
+def _is_bulleted_table(tag_elem) -> bool:
+    if tag_elem.tag != "table":
+        return False
+
+    rows = tag_elem.findall(".//tr")
+    for row in rows:
+        text = _construct_text(row)
+        if text and not is_bulleted_text(text):
+            return False
+
+    return True

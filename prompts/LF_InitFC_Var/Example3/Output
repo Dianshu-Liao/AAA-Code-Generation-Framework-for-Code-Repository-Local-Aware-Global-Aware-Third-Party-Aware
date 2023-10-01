@@ -1,0 +1,18 @@
+#to_be_generated_code
+import re
+
+def _is_bulleted_table(tag_elem) -> bool:
+
+    BULLETS_PATTERN = "|".join(UNICODE_BULLETS)
+    UNICODE_BULLETS_RE = re.compile(f"(?:{BULLETS_PATTERN})(?!{BULLETS_PATTERN})")
+
+    if tag_elem.tag != "table":
+        return False
+
+    rows = tag_elem.findall(".//tr")
+    for row in rows:
+        text = _construct_text(row)
+        if text and UNICODE_BULLETS_RE.match(text.strip()):
+            return False
+
+    return True
