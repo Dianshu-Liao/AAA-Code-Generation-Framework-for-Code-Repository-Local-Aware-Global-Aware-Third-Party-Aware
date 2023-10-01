@@ -1,24 +1,7 @@
 class Config:
-    # Data61
-    # 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
 
-    # share public
-    # sk - pCrIuPXkPYSYlb9cVUzUT3BlbkFJFuLjLq7deB8Slk6ASQnu
+    OPENAI_API_KEY = "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"
 
-    #120 dollar
-    # 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
-
-    #120 dollar
-    #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
-
-    #gpt4
-    #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
-    #org-H0KuItDf72HDIcK88NyHjYu9
-
-    #shidong data61
-    #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
-    OPENAI_API_KEY = "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"
-    # OpenAI_ORG = "org-H0KuItDf72HDIcK88NyHjYu9"
 
     embedding_model = "text-embedding-ada-002"
     embedding_encoding = "cl100k_base"  # this the encoding for text-embedding-ada-002
