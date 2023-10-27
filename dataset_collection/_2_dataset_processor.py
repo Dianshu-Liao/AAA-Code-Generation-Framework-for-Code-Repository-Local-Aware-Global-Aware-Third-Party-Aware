@@ -50,9 +50,9 @@ class DatasetProcessor:
                     self.unzip_tar_gz_file(dataset_repo_path)
 
                     py_file_nums = FileUtil.count_python_files(unziped_directory)
-                    if py_file_nums < 5:
+                    if py_file_nums < 10:
                         os.rmdir(unziped_directory)
-                        print('{} is removed since it contains less than 5 py files'.format(unziped_directory))
+                        print('{} is removed since it contains less than 10 py files'.format(unziped_directory))
 
                     # filtered_data.loc[filtered_data['file_href'] == url, 'py_file_nums'] = py_file_nums
                     # new_filtered_data = new_filtered_data._append(filtered_data[filtered_data['file_href'] == url])
