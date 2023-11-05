@@ -166,7 +166,7 @@ class Evaluator:
         cases = {'repo name': [], 'file_path': [], 'relative_file_path': [], 'fully_qualified_name': [], 'comment': [],
                  'raw_source_code': [], 'comment_free_source_code': [],
                  'LF_InitFC_repo_aware_5_lib_prompt': [], 'LF_InitFC_repo_aware_5_lib_code': [], 'pure_LF_InitFC_repo_aware_5_lib_code': [],
-                 'LF_InitFC_FP_repo_aware_5_lib_prompt': [], 'LF_InitFC_FP_repo_aware_5_lib_code': [],
+
                  }
 
         num = 0
@@ -181,8 +181,13 @@ class Evaluator:
             fully_qualified_name = function_info['fully_qualified_name']
             comment_free_source_code = function_info['comment_free_source_code']
 
+            if len(RQ3_result) == 0:
+                pass
+            else:
+                sameLine_in_RQ3_result = RQ3_result[(RQ3_result['file_path'] == file_path) & (RQ3_result['fully_qualified_name'] == fully_qualified_name)]
+                if len(sameLine_in_RQ3_result) >= 1:
+                    continue
 
-            # 检查function_dataset中是否存在同样的行
             sameLine = test_case[(test_case['file_path'] == file_path) &
                                  (test_case['fully_qualified_name'] == fully_qualified_name)]
             if len(sameLine) >= 1:
@@ -276,9 +281,9 @@ class Evaluator:
             if len(RQ2_result) == 0:
                 pass
             else:
-                sameLine_in_RQ3_result = RQ2_result[
+                sameLine_in_RQ2_result = RQ2_result[
                     (RQ2_result['file_path'] == file_path) & (RQ2_result['fully_qualified_name'] == fully_qualified_name)]
-                if len(sameLine_in_RQ3_result) >= 1:
+                if len(sameLine_in_RQ2_result) >= 1:
                     continue
 
 
@@ -396,13 +401,13 @@ if __name__ == '__main__':
     function_bases_dir = '../data/function_base/'
 
 
-    RQ1_saved_result_path = '../saved_results/RQ1/Normal_5LocalInfo_Gen.csv'
+    RQ1_saved_result_path = '../saved_results/Normal_5LocalInfo_Gen.csv'
     Evaluator.evaluationRQ1(function_bases_dir, RQ1_saved_result_path)
 
-    saved_result_path = '../saved_results/RQ2/Four_Repo_Aware.csv'
+    saved_result_path = '../saved_results/Four_Repo_Aware.csv'
     Evaluator.evaluationRQ2(function_bases_dir, saved_result_path, RQ1_saved_result_path)
 
-    saved_result_path = '../saved_results/RQ3/AAA_result.csv'
+    saved_result_path = '../saved_results/AAA_result.csv'
     Evaluator.evaluationRQ3(function_bases_dir, saved_result_path, RQ1_saved_result_path)
 
 
