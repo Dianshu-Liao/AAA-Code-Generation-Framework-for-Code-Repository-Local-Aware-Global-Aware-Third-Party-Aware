@@ -1,6 +1,6 @@
 class Config:
 
-    OPENAI_API_KEY = "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"
+    OPENAI_API_KEY = "sk-00000000000000006zlcT3BlbkFJkxrdc5elGv7zr6la3hAv"
 
 
     embedding_model = "text-embedding-ada-002"
