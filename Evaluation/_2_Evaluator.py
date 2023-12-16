@@ -165,8 +165,7 @@ class Evaluator:
 
         cases = {'repo name': [], 'file_path': [], 'relative_file_path': [], 'fully_qualified_name': [], 'comment': [],
                  'raw_source_code': [], 'comment_free_source_code': [],
-                 'LF_InitFC_repo_aware_5_lib_prompt': [], 'LF_InitFC_repo_aware_5_lib_code': [], 'pure_LF_InitFC_repo_aware_5_lib_code': [],
-
+                 'LF_InitFC_repo_aware_5_lib_prompt': [], 'LF_InitFC_repo_aware_5_lib_code': [], 'pure_LF_InitFC_repo_aware_5_lib_code': []
                  }
 
         num = 0
